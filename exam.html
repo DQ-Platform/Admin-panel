@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sınaq İmtahanı — Dövlət Qulluğu</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- EXAM SPECIFIC HEADER (Taymer Və İmtahan Başlığı) -->
+  <header class="bg-[#1c2541] border-b border-[#d4af37]/20 py-4 px-6 sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <a href="index.html" class="text-gray-400 hover:text-white mr-2"><i class="fa-solid fa-arrow-left"></i> Sayta Qayıt</a>
+        <span class="text-sm font-bold text-[#d4af37] border-l border-gray-700 pl-3">BB Qrupu Sınaq #1</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="bg-[#0b132b] px-4 py-1.5 rounded-lg border border-[#d4af37]/30 text-[#d4af37] font-mono font-bold">
+          <i class="fa-regular fa-clock mr-1"></i> 39:45
+        </div>
+        <button class="bg-red-500/20 text-red-400 border border-red-500/30 px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:bg-red-500 hover:text-white">İmtahanı Bitir</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- EXAM CONTENT CONTAINER -->
+  <main class="max-w-4xl mx-auto p-6 my-10">
+    <div class="bg-[#1c2541] border border-gray-800 rounded-2xl p-8 shadow-xl">
+      <div class="flex justify-between text-xs text-gray-400 mb-6 pb-3 border-b border-gray-700/60">
+        <span>Qanunvericilik Sualı</span>
+        <span>Sual 1 / 40</span>
+      </div>
+      <h2 class="text-lg font-medium text-white mb-6 leading-relaxed">
+        Azərbaycan Respublikasının Konstitusiyasına əsasən, dövlət hakimiyyətinin yeganə mənbəyi kimdir?
+      </h2>
+      <div class="space-y-3 mb-8">
+        <label class="flex items-center p-4 bg-[#0b132b] rounded-xl border border-gray-700 hover:border-[#d4af37] cursor-pointer">
+          <input type="radio" name="option" class="accent-[#d4af37] mr-3">
+          <span class="text-sm">A) Azərbaycan Xalqı</span>
+        </label>
+        <label class="flex items-center p-4 bg-[#0b132b] rounded-xl border border-gray-700 hover:border-[#d4af37] cursor-pointer">
+          <input type="radio" name="option" class="accent-[#d4af37] mr-3">
+          <span class="text-sm">B) Milli Məclis</span>
+        </label>
+      </div>
+      <div class="flex justify-between pt-4 border-t border-gray-700/60">
+        <button class="px-5 py-2 rounded-lg border border-gray-700 text-gray-400 text-sm">Əvvəlki</button>
+        <button class="gold-btn px-6 py-2 rounded-lg text-sm">Növbəti</button>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
+
