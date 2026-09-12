@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dövlət Qulluğu Qanunvericilik Portalı</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandDark: '#0b132b',
+            brandCard: '#1c2541',
+            brandAccent: '#3a506b',
+            goldPrimary: '#d4af37',
+            goldHover: '#f39c12',
+          }
+        }
+      }
+    }
+  </script>
+  <!-- FontAwesome İkonları -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-brandDark text-white font-sans antialiased selection:bg-goldPrimary selection:text-black">
+
+  <!-- NAVİQASİYA (HEADER) -->
+  <header class="sticky top-0 z-50 bg-brandDark/90 backdrop-blur-md border-b border-goldPrimary/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logo / Brend -->
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-goldPrimary to-yellow-200 flex items-center justify-center text-brandDark font-bold text-xl shadow-lg shadow-goldPrimary/20">
+          DQ
+        </div>
+        <div>
+          <span class="text-lg font-bold tracking-wide text-white block">DÖVLƏT QULLUĞU</span>
+          <span class="text-xs text-goldPrimary tracking-widest uppercase font-semibold">Qanunvericilik Portalı</span>
+        </div>
+      </div>
+
+      <!-- Menyu Linkləri -->
+      <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-300">
+        <a href="#home" class="hover:text-goldPrimary transition-colors duration-200">Ana Səhifə</a>
+        <a href="#about" class="hover:text-goldPrimary transition-colors duration-200">Haqqında</a>
+        <a href="#exam" class="hover:text-goldPrimary transition-colors duration-200">Onlayn Sınaq</a>
+        <a href="#features" class="hover:text-goldPrimary transition-colors duration-200">Üstünlüklər</a>
+        <a href="#contact" class="hover:text-goldPrimary transition-colors duration-200">Əlaqə</a>
+      </nav>
+
+      <!-- Düymələr -->
+      <div class="flex items-center space-x-4">
+        <a href="#login" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-goldPrimary border border-goldPrimary/40 rounded-lg hover:border-goldPrimary hover:bg-goldPrimary/10 transition-all duration-200">
+          <i class="fa-solid fa-user-lock mr-2"></i> Kabinet
+        </a>
+        <a href="#exam" class="inline-flex items-center justify-center px-5 py-2 text-sm font-semibold text-brandDark bg-gradient-to-r from-goldPrimary to-yellow-400 rounded-lg shadow-md hover:shadow-goldPrimary/20 hover:scale-105 transition-all duration-200">
+          Sınağa Başla
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="home" class="relative py-20 lg:py-28 overflow-hidden border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        
+        <div>
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-goldPrimary/10 border border-goldPrimary/30 text-goldPrimary text-xs font-semibold uppercase tracking-wider mb-6">
+            <i class="fa-solid fa-award"></i>
+            <span>BB, BA və AC Təsnifatları Üzrə İxtisaslaşmış Hazırlıq</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+            Dövlət Qulluğuna <br>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-goldPrimary via-yellow-200 to-goldHover"> Mükəmməl Hazırlıq</span>
+          </h1>
+          <p class="text-gray-300 text-lg leading-relaxed mb-8 max-w-xl">
+            Qanunvericilik fənnini sadə, sistemli və tətbiqi metodlarla öyrənin. İnteraktiv onlayn sınaq imtahanları ilə biliyinizi test edin və nəticələrinizi anında analiz edin.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#exam" class="px-8 py-4 bg-gradient-to-r from-goldPrimary to-goldHover text-brandDark font-bold rounded-xl shadow-lg shadow-goldPrimary/20 hover:shadow-goldPrimary/40 hover:-translate-y-0.5 transition-all duration-200 text-center">
+              <i class="fa-solid fa-pen-to-square mr-2"></i> Sınaq İmtahanına Başla
+            </a>
+            <a href="#about" class="px-8 py-4 bg-brandCard border border-gray-700 text-white font-semibold rounded-xl hover:border-goldPrimary/50 transition-all duration-200 text-center">
+              Proqram Haqqında
+            </a>
+          </div>
+        </div>
+
+        <!-- İnteraktiv Kart / Ekran Göstəricisi -->
+        <div class="relative">
+          <div class="absolute -inset-1 bg-gradient-to-r from-goldPrimary to-brandAccent rounded-2xl blur-xl opacity-30"></div>
+          <div class="relative bg-brandCard border border-goldPrimary/30 rounded-2xl p-6 sm:p-8 shadow-2xl">
+            <div class="flex items-center justify-between border-b border-gray-700/60 pb-4 mb-6">
+              <div class="flex items-center space-x-3">
+                <span class="w-3 h-3 bg-red-500 rounded-full"></span>
+                <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+              </div>
+              <span class="text-xs text-goldPrimary font-mono">DİM Standartlarına Uyğun</span>
+            </div>
+
+            <div class="space-y-4">
+              <div class="p-4 bg-brandDark/60 rounded-xl border border-white/5 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <i class="fa-solid fa-scale-balanced text-goldPrimary text-xl"></i>
+                  <div>
+                    <h4 class="font-semibold text-sm">Konstitusiya və Qanunlar</h4>
+                    <p class="text-xs text-gray-400">Yenilənmiş normativ hüquqi aktlar</p>
+                  </div>
+                </div>
+                <span class="text-xs text-green-400 bg-green-400/10 px-2.5 py-1 rounded-full font-medium">Aktiv</span>
+              </div>
+
+              <div class="p-4 bg-brandDark/60 rounded-xl border border-white/5 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <i class="fa-solid fa-stopwatch text-goldPrimary text-xl"></i>
+                  <div>
+                    <h4 class="font-semibold text-sm">Taymerli Sınaq Rejimi</h4>
+                    <p class="text-xs text-gray-400">Real imtahan mühiti və vaxt nəzarəti</p>
+                  </div>
+                </div>
+                <span class="text-xs text-green-400 bg-green-400/10 px-2.5 py-1 rounded-full font-medium">Aktiv</span>
+              </div>
+
+              <div class="p-4 bg-brandDark/60 rounded-xl border border-white/5 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                  <i class="fa-solid fa-chart-line text-goldPrimary text-xl"></i>
+                  <div>
+                    <h4 class="font-semibold text-sm">Anında Statistik Analiz</h4>
+                    <p class="text-xs text-gray-400">Səhvlərin avtomatik təhlili</p>
+                  </div>
+                </div>
+                <span class="text-xs text-green-400 bg-green-400/10 px-2.5 py-1 rounded-full font-medium">Aktiv</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STATİSTİKA -->
+  <section class="py-12 bg-brandDark/40 border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div class="p-4">
+          <p class="text-3xl sm:text-4xl font-extrabold text-goldPrimary mb-1">1500+</p>
+          <p class="text-sm text-gray-400 font-medium">Uğurlu Məzun</p>
+        </div>
+        <div class="p-4">
+          <p class="text-3xl sm:text-4xl font-extrabold text-goldPrimary mb-1">94%</p>
+          <p class="text-sm text-gray-400 font-medium">İmtahan Keçid Faizi</p>
+        </div>
+        <div class="p-4">
+          <p class="text-3xl sm:text-4xl font-extrabold text-goldPrimary mb-1">8+ İl</p>
+          <p class="text-sm text-gray-400 font-medium">Tədrıs Təcrübəsi</p>
+        </div>
+        <div class="p-4">
+          <p class="text-3xl sm:text-4xl font-extrabold text-goldPrimary mb-1">100%</p>
+          <p class="text-sm text-gray-400 font-medium">Yenilənmiş Proqram</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONLAYN İMTAHAN BÖLMƏSİ (SAMPLE CARD) -->
+  <section id="exam" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <h2 class="text-3xl font-bold text-white mb-4">Onlayn Sınaq Sistemi</h2>
+        <div class="w-16 h-1 bg-goldPrimary mx-auto rounded-full mb-6"></div>
+        <p class="text-gray-300">Aşağıdakı bölmədən uyğun ixtisaslaşma üzrə sınaq imtahanını seçərək dərhal biliklərinizi yoxlaya bilərsiniz.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        
+        <!-- Kart 1 -->
+        <div class="bg-brandCard border border-gray-800 rounded-2xl p-6 hover:border-goldPrimary/50 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-semibold px-3 py-1 bg-goldPrimary/10 text-goldPrimary rounded-full border border-goldPrimary/20">BB Qrupu</span>
+              <span class="text-xs text-gray-400"><i class="fa-regular fa-clock mr-1"></i> 40 dəq</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">BB1 - BB2 Qanunvericilik Sınağı</h3>
+            <p class="text-gray-400 text-sm mb-6">Azərbaycan Respublikasının Konstitusiyası və dövlət qulluğu haqqında əsas qanunvericilik testləri.</p>
+          </div>
+          <button class="w-full py-3 bg-goldPrimary/10 text-goldPrimary font-semibold rounded-xl border border-goldPrimary/30 hover:bg-goldPrimary hover:text-brandDark transition-all duration-200">
+            İmtahana Başla
+          </button>
+        </div>
+
+        <!-- Kart 2 -->
+        <div class="bg-brandCard border border-goldPrimary/40 rounded-2xl p-6 shadow-lg shadow-goldPrimary/5 flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-goldPrimary text-brandDark font-bold text-[10px] uppercase px-3 py-1 rounded-bl-lg">
+            Populyar
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-semibold px-3 py-1 bg-goldPrimary/10 text-goldPrimary rounded-full border border-goldPrimary/20">BA Qrupu</span>
+              <span class="text-xs text-gray-400"><i class="fa-regular fa-clock mr-1"></i> 45 dəq</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">BA1 - BA4 Genişləndirilmiş Sınaq</h3>
+            <p class="text-gray-400 text-sm mb-6">İnzibati vəızifələrin BA təsnifatı üzrə DİM çərçivə sənədinə tam uyğun suallar bütövü.</p>
+          </div>
+          <button class="w-full py-3 bg-gradient-to-r from-goldPrimary to-goldHover text-brandDark font-bold rounded-xl hover:shadow-lg hover:shadow-goldPrimary/20 transition-all duration-200">
+            İmtahana Başla
+          </button>
+        </div>
+
+        <!-- Kart 3 -->
+        <div class="bg-brandCard border border-gray-800 rounded-2xl p-6 hover:border-goldPrimary/50 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-semibold px-3 py-1 bg-goldPrimary/10 text-goldPrimary rounded-full border border-goldPrimary/20">AC Qrupu</span>
+              <span class="text-xs text-gray-400"><i class="fa-regular fa-clock mr-1"></i> 50 dəq</span>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">AC1 - AC4 Rəhbər Vəzifələr</h3>
+            <p class="text-gray-400 text-sm mb-6">Rəhbər vəzifələr üzrə mürəkkəbləşdirilmiş hüquqi situativ və standart test tapşırıqları.</p>
+          </div>
+          <button class="w-full py-3 bg-goldPrimary/10 text-goldPrimary font-semibold rounded-xl border border-goldPrimary/30 hover:bg-goldPrimary hover:text-brandDark transition-all duration-200">
+            İmtahana Başla
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black/40 border-t border-gray-800 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="text-center md:text-left">
+        <p class="text-sm text-gray-400">&copy; 2026 Dövlət Qulluğu Qanunvericilik Portalı. Bütün hüquqlar qorunur.</p>
+      </div>
+      <div class="flex space-x-6 text-gray-400">
+        <a href="#" class="hover:text-goldPrimary text-xl"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#" class="hover:text-goldPrimary text-xl"><i class="fa-brands fa-telegram"></i></a>
+        <a href="#" class="hover:text-goldPrimary text-xl"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+
