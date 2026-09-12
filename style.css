@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0b132b;
+  color: #ffffff;
+}
+
+/* Qızılı gradient və parıltı effektləri */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #d4af37 0%, #f39c12 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border {
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.gold-btn {
+  background: linear-gradient(135deg, #d4af37 0%, #f39c12 100%);
+  color: #0b132b;
+  font-weight: 700;
+  transition: all 0.2s ease-in-out;
+}
+
+.gold-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
