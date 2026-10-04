@@ -16711,5 +16711,424 @@ window.HZ = (function () {
 })();
 
 </script>
+    <!-- ===== YAMAQ: «İmtahan Qeydiyyatı» paneli (portal) — saytın öz dizaynında =====
+     Bunu YALNIZ BİR DƏFƏ, ən sonuncu yamağın (yamaq-odenis) ALTINA, </body>-dən əvvələ yapışdır. Heç nə silmə.
+     Əlavə SQL lazım deyil (dq_v2_store və ya lokal yaddaş: lxreg kolleksiyası). -->
+<style id="lxp-css">
+/* ---------- giriş: ana səhifədə zolaq + kartda düymə ---------- */
+#lxp-ban{max-width:960px;margin:22px auto 0;padding:0 14px}
+#lxp-ban .lxp-bi{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:linear-gradient(120deg,#0f2c52,#1d4f91);color:#fff;border-radius:18px;padding:16px 18px;box-shadow:0 8px 20px rgba(10,47,122,.2)}
+#lxp-ban b{display:block;font-size:17px}#lxp-ban span{font-size:13px;opacity:.85}
+#lxp-ban button,.lxp-cbtn{border:0;border-radius:99px;padding:11px 18px;font:800 14px inherit;font-family:inherit;cursor:pointer;background:#fff;color:#0a2f7a}
+.lxp-cbtn{display:block;width:100%;margin-top:10px;background:#eef3fc;border:1px solid #cddcf5}
+/* ---------- portal ---------- */
+#lxp{position:fixed;inset:0;z-index:99990;background:#eef2f9;overflow-y:auto;-webkit-overflow-scrolling:touch;font-family:inherit;color:#0f2147}
+.lxp-top{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:rgba(255,255,255,.96);border-bottom:1px solid #dbe5f7}
+.lxp-br{display:flex;align-items:center;gap:10px;min-width:0}
+.lxp-lg{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#0f2c52,#2f63bd);color:#fff;display:flex;align-items:center;justify-content:center;font-size:21px;flex:none}
+.lxp-br b{display:block;font-size:16px;color:#0a2f7a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.lxp-br small{display:block;font-size:11px;color:#64748b}
+.lxp-back{border:1px solid #cbd5e1;background:#fff;border-radius:99px;padding:9px 16px;font:800 13px inherit;font-family:inherit;color:#0a2f7a;cursor:pointer;white-space:nowrap}
+.lxp-w{max-width:1100px;margin:0 auto;padding:14px}
+.lxp-hero{border-radius:22px;padding:28px 22px;color:#fff;background:linear-gradient(120deg,#0b1f45 0%,#1d4f91 62%,#c9a24f 140%);box-shadow:0 10px 24px rgba(10,47,122,.2)}
+.lxp-bdg{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:99px;padding:6px 12px;font-size:12px;font-weight:800}
+.lxp-bdg i{width:8px;height:8px;border-radius:50%;background:#4ade80;display:inline-block}
+.lxp-hero h1{margin:14px 0 8px;font-size:clamp(26px,6vw,36px);font-weight:900;color:#fff}.lxp-hero p{margin:0;max-width:560px;font-size:14px;line-height:1.55;opacity:.92}
+.lxp-card{margin-top:14px;background:#fff;border-radius:22px;box-shadow:0 8px 22px rgba(10,47,122,.1);overflow:hidden}
+.lxp-ch{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:16px 18px}
+.lxp-ch b{display:block;font-size:17px;color:#0a2f7a}.lxp-ch small{color:#64748b;font-size:12px}
+.lxp-tb{display:flex;gap:8px;flex-wrap:wrap}
+.lxp-gh{border:1px solid #cbd5e1;background:#fff;border-radius:99px;padding:9px 14px;font:800 13px inherit;font-family:inherit;color:#0a2f7a;cursor:pointer}
+.lxp-sc{overflow-x:auto}
+table.lxp-t{width:100%;border-collapse:collapse;font-size:14px}
+.lxp-t th{background:linear-gradient(120deg,#0f2c52,#1d4f91);color:#fff;text-align:left;padding:13px 12px;font-size:11px;letter-spacing:.5px;text-transform:uppercase;white-space:nowrap}
+.lxp-t td{padding:13px 12px;border-bottom:1px solid #e8eef8;vertical-align:middle}
+.lxp-r{cursor:pointer}.lxp-r:hover td{background:#f6f9ff}
+.lxp-pl{font-weight:800;color:#0f2147}
+.lxp-ct{display:inline-block;background:#e0e9fb;color:#0a2f7a;border-radius:99px;padding:5px 11px;font-weight:800;font-size:12px}
+.lxp-sh{display:inline-block;background:#eef2f9;color:#334155;border-radius:99px;padding:5px 11px;font-weight:700;font-size:12px;white-space:nowrap}
+.lxp-dt b{display:block}.lxp-dt small{color:#475569;font-weight:700}
+.lxp-fr b{display:block;color:#0f766e}.lxp-fr.low b{color:#c2410c}.lxp-fr.out b{color:#dc2626}.lxp-fr small{color:#64748b}
+.lxp-pr{font-weight:800;color:#0a2f7a;white-space:nowrap}.lxp-pr.free{color:#166534}
+.lxp-bt{border:0;border-radius:99px;padding:12px 16px;font:800 14px inherit;font-family:inherit;color:#fff;background:linear-gradient(135deg,#1d4f91,#0a2f7a);cursor:pointer;min-width:120px;box-shadow:0 5px 12px rgba(10,47,122,.22)}
+.lxp-bt:disabled{background:#94a3b8;box-shadow:none;cursor:not-allowed}.lxp-bt.ok{background:linear-gradient(135deg,#16a34a,#0f7a37)}
+.lxp-dr td{padding:0 14px 16px!important;background:#fff;border-bottom:0!important}
+.lxp-d{border:1px solid #dbe5f7;border-radius:16px;overflow:hidden;box-shadow:0 4px 14px rgba(10,47,122,.08)}
+.lxp-dh{display:flex;align-items:center;justify-content:space-between;gap:8px;background:linear-gradient(120deg,#0f2c52,#1d4f91);color:#fff;padding:14px 16px;font-weight:800}
+.lxp-dh span.s{font-size:12px;border-radius:99px;padding:4px 10px;background:rgba(74,222,128,.2);color:#bbf7d0}.lxp-dh span.s.x{background:rgba(248,113,113,.2);color:#fecaca}
+.lxp-dl{padding:4px 16px}
+.lxp-dl div{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #eef2f9;font-size:14px}
+.lxp-dl div span{color:#475569;font-weight:700}.lxp-dl div b{text-align:right}
+.lxp-df{padding:14px 16px}.lxp-df .lxp-bt{width:100%;padding:14px}
+.lxp-em{padding:36px 18px;text-align:center;color:#64748b}
+/* mobil: sətirlər kart kimi */
+@media(max-width:760px){
+ .lxp-t thead{display:none}.lxp-t,.lxp-t tbody,.lxp-t tr,.lxp-t td{display:block;width:100%;box-sizing:border-box}
+ .lxp-r{margin:0 12px 12px;width:auto!important;border:1px solid #dbe5f7;border-radius:16px;padding:6px 14px;background:#fff}
+ .lxp-t td{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid #eef2f9;text-align:right}
+ .lxp-t td::before{content:attr(data-l);color:#64748b;font-size:11px;font-weight:800;text-transform:uppercase;text-align:left;flex:none}
+ .lxp-t td:last-child{border-bottom:0}.lxp-t td:last-child::before{display:none}.lxp-t td:last-child .lxp-bt{width:100%}
+ .lxp-dr{margin:-4px 12px 12px;width:auto!important}.lxp-dr td{display:block;padding:0 0 4px!important}.lxp-dr td::before{display:none}
+ .lxp-sc{padding-top:4px}
+}
+/* pəncərələr */
+.lxp-ov{position:fixed;inset:0;background:rgba(15,23,42,.6);z-index:100002;display:flex;align-items:flex-start;justify-content:center;padding:16px;overflow-y:auto}
+.lxp-bx{background:#fff;border-radius:20px;padding:20px;width:min(100%,420px);margin:auto;box-sizing:border-box;color:#1e293b}
+.lxp-bx h3{margin:0 0 4px;color:#0a2f7a;font-size:18px;text-align:center}.lxp-bx .sb{text-align:center;color:#64748b;font-size:13px;margin-bottom:12px}
+.lxp-bx label{display:block;font-size:13px;font-weight:800;margin:10px 0 5px;color:#0a2f7a}
+.lxp-bx input{width:100%;box-sizing:border-box;padding:12px;border:1px solid #cbd5e1;border-radius:12px;font:inherit;font-size:15px;background:#f8fafc}
+.lxp-bx input:focus{outline:0;border-color:#2f63bd;background:#fff}
+.lxp-m{font-size:13px;min-height:18px;color:#dc2626;margin-top:10px}
+.lxp-row{display:flex;gap:8px;margin-top:12px}.lxp-row>*{flex:1}
+.lxp-sb{border:0;border-radius:12px;padding:12px 6px;font:800 14px inherit;font-family:inherit;color:#fff;cursor:pointer;background:#0a2f7a}
+.lxp-sb.wa{background:#25D366}.lxp-sb.tg{background:#229ed9}.lxp-sb.x{background:#64748b}.lxp-sb:disabled{opacity:.6}
+.lxp-no{text-align:center;background:linear-gradient(120deg,#0f2c52,#1d4f91);color:#fff;border-radius:16px;padding:16px;margin:10px 0}
+.lxp-no small{display:block;opacity:.85;font-size:12px}.lxp-no b{display:block;font-size:32px;letter-spacing:2px;margin:4px 0 10px}
+.lxp-no button{border:0;border-radius:99px;padding:8px 16px;font:800 13px inherit;font-family:inherit;background:#fff;color:#0a2f7a;cursor:pointer}
+.lxp-warn{background:#fef3c7;color:#92400e;border-radius:12px;padding:10px 12px;font-size:13px;font-weight:700;text-align:center}
+.lxp-am{font-size:32px;font-weight:900;color:#0a2f7a;text-align:center;margin:4px 0 10px}
+.lxp-cr{display:flex;gap:8px;align-items:center;justify-content:space-between;background:#f1f5f9;border-radius:12px;padding:10px 12px;margin-bottom:8px}.lxp-cr b{letter-spacing:1px;font-size:16px;word-break:break-all}
+.lxp-ck{border:1px solid #e2e8f0;border-radius:12px;padding:10px 12px;margin-top:8px;font-size:13px}.lxp-ck b{color:#0a2f7a}
+/* admin */
+.lxa-bd{display:inline-block;border-radius:99px;padding:3px 9px;font-weight:800;font-size:12px}.lxa-bd.p{background:#fef3c7;color:#92400e}.lxa-bd.a{background:#dcfce7;color:#166534}
+.lxa-ac{white-space:nowrap}.lxa-ac button{margin:2px}
+/* düymə animasiyası zəif */
+#lxp-ban button,.lxp-cbtn,.lxp-bt,.lxp-gh,.lxp-back,.lxp-sb{transition:opacity .12s ease,background-color .12s ease!important}
+#lxp-ban button:active,.lxp-cbtn:active,.lxp-bt:active,.lxp-gh:active,.lxp-back:active,.lxp-sb:active{transform:scale(.99)}
+</style>
+<script>
+(function () {
+  function boot() {
+    var LX = window.LX;
+    if (!LX || !LX.v2 || !LX.endOf || typeof V2 === 'undefined') return false;
+    if (window.LXP) return true;
+
+    var $ = function (i) { return document.getElementById(i); }, E = function (s) { return V2.esc(s); };
+    var p2 = function (n) { return String(n).padStart(2, '0'); };
+    var WA = typeof DQ_WA !== 'undefined' ? DQ_WA : '994504305162', TG = typeof DQ_TG !== 'undefined' ? DQ_TG : 'Imanoff_oo1';
+    var P = { regs: [], at: null, open: null, ex: [] };
+    var LXP = window.LXP = {};
+
+    /* ---------- köməkçilər ---------- */
+    function dmy(d) { return p2(d.getDate()) + '.' + p2(d.getMonth() + 1) + '.' + d.getFullYear(); }
+    function hm(d) { return p2(d.getHours()) + ':' + p2(d.getMinutes()); }
+    function same(a, b) { return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate(); }
+    function money(v) { var n = Math.round(parseFloat(v) * 100) / 100; return isNaN(n) ? '' : (n + ' ₼'); }
+    function digits(s) { return String(s == null ? '' : s).replace(/\D/g, ''); }
+    function grp(s) { return digits(s).replace(/(.{4})/g, '$1 ').trim(); }
+    function payOf(x) { var p = x && x.pay; return p && typeof p === 'object' ? p : null; }
+    function shift(d) { var h = d.getHours(); return h < 12 ? 'Səhər növbəsi' : (h < 17 ? 'Günorta növbəsi' : 'Axşam növbəsi'); }
+    function regEnd(x) { return x.regEnd ? new Date(x.regEnd) : new Date(x.start); }
+    function capOf(x) { var c = parseInt(x.cap); return c > 0 ? c : 0; }
+    function toast(t) { try { V2.toast(t); } catch (e) { alert(t); } }
+    function mine() { try { return JSON.parse(localStorage.getItem('lx_my_regs') || '{}') || {}; } catch (e) { return {}; } }
+    function remember(id, o) { try { var m = mine(); m[id] = o; localStorage.setItem('lx_my_regs', JSON.stringify(m)); } catch (e) {} }
+    function copy(t, btn) {
+      var ok = function () { if (btn) { var o = btn.getAttribute('data-o') || btn.textContent; btn.setAttribute('data-o', o); btn.textContent = '✓ Kopyalandı'; setTimeout(function () { btn.textContent = o; }, 1500); } };
+      function fb() { var a = document.createElement('textarea'); a.value = t; a.style.cssText = 'position:fixed;opacity:0;top:0;left:0'; document.body.appendChild(a); a.focus(); a.select(); try { document.execCommand('copy'); ok(); } catch (e) { prompt('Kopyalayın:', t); } a.remove(); }
+      try { if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(t).then(ok, fb); return; } } catch (e) {} fb();
+    }
+    LXP.copy = copy;
+    async function rawDel(c, id) {
+      await V2.probe();
+      if (V2.mode === 'cloud') await _supabase.from('dq_v2_store').delete().eq('id', id);
+      else localStorage.setItem('dq_v2_' + c, JSON.stringify((await V2.list(c)).filter(function (r) { return r._id != id; })));
+    }
+    async function loadAll() {
+      try { await LX.load(); } catch (e) {}
+      try { P.regs = (await V2.list('lxreg')) || []; } catch (e) { P.regs = []; }
+      P.at = new Date();
+    }
+    function exams() {
+      var n = Date.now();
+      return (LX.cache || []).filter(function (x) { return x.status !== 'Bitib' && x.start && LX.endOf(x).getTime() > n; })
+        .sort(function (a, b) { return new Date(a.start) - new Date(b.start); });
+    }
+    function exam(id) { return (LX.cache || []).filter(function (x) { return String(x._id) === String(id); })[0]; }
+    function regsOf(x) { return P.regs.filter(function (r) { return String(r.exam_id) === String(x._id) && r.status !== 'cancelled'; }); }
+    function state(x) {
+      var cap = capOf(x), cnt = regsOf(x).length, free = cap ? Math.max(0, cap - cnt) : null;
+      var code = Date.now() > regEnd(x).getTime() ? 'closed' : (cap && cnt >= cap ? 'full' : 'open');
+      return { code: code, cap: cap, cnt: cnt, free: free };
+    }
+    async function paidMap() { try { return (await V2.list('lxpay')) || []; } catch (e) { return []; } }
+    function isPaid(pays, fin, no, cat) { fin = String(fin).toUpperCase(); return pays.some(function (z) { return z.paid && String(z.fin).toUpperCase() === fin && String(z.exam_no) === String(no) && String(z.cat).toUpperCase() === String(cat).toUpperCase(); }); }
+
+    /* ---------- modal ---------- */
+    function modal(inner) {
+      var o = $('lxp-m'); if (o) o.remove();
+      var d = document.createElement('div'); d.id = 'lxp-m'; d.className = 'lxp-ov';
+      d.onclick = function (e) { if (e.target === d) d.remove(); };
+      d.innerHTML = '<div class="lxp-bx">' + inner + '</div>'; document.body.appendChild(d); return d;
+    }
+    LXP.close = function () { var o = $('lxp-m'); if (o) o.remove(); };
+
+    /* ---------- portal ---------- */
+    function rowHtml(x) {
+      var s = new Date(x.start), e = LX.endOf(x), st = state(x), p = payOf(x), my = mine()[x._id], open = P.open === String(x._id);
+      var tm = 'Saat: ' + hm(s) + ' – ' + (same(s, e) ? hm(e) : p2(e.getDate()) + '.' + p2(e.getMonth() + 1) + ' ' + hm(e));
+      var re = regEnd(x), reTx = p2(re.getDate()) + '.' + p2(re.getMonth() + 1) + ' ' + hm(re);
+      var price = p ? (p.on ? '<span class="lxp-pr">' + E(money(p.price)) + '</span>' : '<span class="lxp-pr free">Pulsuz</span>') : '<span class="lxp-pr">—</span>';
+      var fr = st.cap ? '<div class="lxp-fr ' + (st.free === 0 ? 'out' : (st.free <= 5 ? 'low' : '')) + '"><b>' + (st.free === 0 ? 'Dolub' : st.free + ' boş yer') + '</b><small>' + st.cnt + ' / ' + st.cap + '</small></div>' : '<div class="lxp-fr"><b>Limitsiz</b><small>' + st.cnt + ' qeydiyyat</small></div>';
+      var btn = my ? '<button type="button" class="lxp-bt ok" onclick="event.stopPropagation();LXP.reg(\'' + x._id + '\')">✅ Qeydiyyatım</button>'
+        : (st.code === 'closed' ? '<button type="button" class="lxp-bt" disabled>Qeydiyyat bitib</button>'
+          : st.code === 'full' ? '<button type="button" class="lxp-bt" disabled>Yer qalmayıb</button>'
+            : '<button type="button" class="lxp-bt" onclick="event.stopPropagation();LXP.reg(\'' + x._id + '\')">Qeydiyyatdan keç</button>');
+      var h = '<tr class="lxp-r" onclick="LXP.tog(\'' + x._id + '\')"><td data-l="#">' + (exams().indexOf(x) + 1) + '</td>' +
+        '<td data-l="İmtahan yeri" class="lxp-pl">' + E(x.place || 'Rəsmi internet saytında') + '</td><td data-l="Növ"><span class="lxp-ct">' + E(x.cat) + '</span></td>' +
+        '<td data-l="Növbə"><span class="lxp-sh">' + shift(s) + '</span></td><td data-l="İmtahan tarixi" class="lxp-dt"><b>' + dmy(s) + '</b><small>' + tm + '</small></td>' +
+        '<td data-l="Qeydiyyat bitmə">' + reTx + '</td><td data-l="Qiymət">' + price + '</td><td data-l="Boş yerlər">' + fr + '</td><td>' + btn + '</td></tr>';
+      if (open) {
+        h += '<tr class="lxp-dr"><td colspan="9"><div class="lxp-d"><div class="lxp-dh"><div>' + E(x.title) + ' <span class="lxp-ct" style="margin-left:6px">' + E(x.cat) + '</span></div><span class="s' + (st.code === 'open' ? '' : ' x') + '">' + (st.code === 'open' ? '● Açıq' : (st.code === 'full' ? 'Dolub' : 'Bağlı')) + '</span></div>' +
+          '<div class="lxp-dl"><div><span>İmtahan tarixi</span><b>' + dmy(s) + ' · ' + tm + '</b></div><div><span>Qeydiyyat bitmə</span><b>' + reTx + '</b></div>' +
+          '<div><span>Qiymət</span><b>' + (p && p.on ? E(money(p.price)) : 'Pulsuz') + '</b></div>' +
+          '<div><span>Boş yer</span><b style="color:#0f766e">' + (st.cap ? st.free + ' yer' : 'Limitsiz') + '</b></div><div><span>Keçən / Cəmi</span><b>' + st.cnt + ' / ' + (st.cap || '∞') + '</b></div></div>' +
+          '<div class="lxp-df">' + btn.replace(/event\.stopPropagation\(\);/, '') + '</div></div></td></tr>';
+      }
+      return h;
+    }
+    function bodyHtml() {
+      var ex = exams(), t = P.at ? hm(P.at) : '';
+      return '<div class="lxp-hero"><span class="lxp-bdg"><i></i> Aktiv qeydiyyat portalı</span><h1>İmtahan Qeydiyyatı</h1><p>«Qeydiyyatdan keç» düyməsinə basaraq imtahana yazılın. Verilən <b>şəxsi iş nömrəsini</b> mütləq qeyd edin.</p></div>' +
+        '<div class="lxp-card"><div class="lxp-ch"><div><b>Qeydiyyat cədvəli</b><small>' + P.regs.filter(function (r) { return r.status !== 'cancelled'; }).length + ' qeydiyyat · ' + t + '</small></div>' +
+        '<div class="lxp-tb"><button type="button" class="lxp-gh" onclick="LXP.check()">🔎 Qeydiyyatımı yoxla</button><button type="button" class="lxp-gh" onclick="LXP.refresh(true)">⟳ Yenilə</button></div></div>' +
+        (ex.length ? '<div class="lxp-sc"><table class="lxp-t"><thead><tr><th>#</th><th>İmtahan keçiriləcək yer</th><th>Növ</th><th>Növbə</th><th>İmtahan tarixi</th><th>Qeydiyyat bitmə</th><th>Qiymət</th><th>Boş yerlər</th><th>Qeydiyyat</th></tr></thead><tbody>' + ex.map(rowHtml).join('') + '</tbody></table></div>'
+          : '<div class="lxp-em">Hazırda aktiv imtahan qeydiyyatı yoxdur.</div>') + '</div>';
+    }
+    function paint() { var b = $('lxp-body'); if (b) b.innerHTML = bodyHtml(); }
+    LXP.open = async function () {
+      if ($('lxp')) return;
+      var d = document.createElement('div'); d.id = 'lxp';
+      d.innerHTML = '<div class="lxp-top"><div class="lxp-br"><div class="lxp-lg">🎓</div><div><b>DQ Platform</b><small>İmtahan Qeydiyyat Portalı</small></div></div><button type="button" class="lxp-back" onclick="LXP.exit()">‹ Ana səhifə</button></div><div class="lxp-w" id="lxp-body"></div>';
+      document.body.appendChild(d); document.body.style.overflow = 'hidden';
+      P.open = null; paint(); await loadAll(); paint();
+      LXP.iv = setInterval(function () { if ($('lxp') && !$('lxp-m')) LXP.refresh(); }, 30000);
+    };
+    LXP.exit = function () { LXP.close(); var d = $('lxp'); if (d) d.remove(); document.body.style.overflow = ''; clearInterval(LXP.iv); };
+    LXP.refresh = async function (t) { await loadAll(); paint(); ptUi(); if (t) toast('Yeniləndi ✅'); };
+    LXP.tog = function (id) { P.open = P.open === String(id) ? null : String(id); paint(); };
+
+    /* ---------- qeydiyyat ---------- */
+    LXP.reg = function (id) {
+      var x = exam(id); if (!x) return;
+      var my = mine()[x._id]; if (my) { LXP.done(id, my.work_no, my.fin); return; }
+      var st = state(x); if (st.code !== 'open') { toast(st.code === 'full' ? 'Yer qalmayıb.' : 'Qeydiyyat bitib.'); return; }
+      var nm = '', fin = ''; try { var c = typeof DQ !== 'undefined' && DQ.cabinet && DQ.cabinet(); if (c) { nm = c.name || ''; fin = c.fin || ''; } } catch (e) {}
+      var s = new Date(x.start);
+      modal('<h3>📝 Qeydiyyat — ' + E(x.cat) + '</h3><div class="sb">' + E(x.title) + ' · ' + dmy(s) + ' ' + hm(s) + '</div>' +
+        '<label>Ad Soyad</label><input id="lxp-n" autocomplete="name" placeholder="Məsələn: Əli Əliyev" value="' + E(nm) + '">' +
+        '<label>FİN kod</label><input id="lxp-f" maxlength="7" autocomplete="off" style="text-transform:uppercase" placeholder="7 simvol" value="' + E(fin) + '">' +
+        '<label>Əlaqə nömrəsi</label><input id="lxp-c" type="tel" inputmode="tel" autocomplete="tel" placeholder="050 000 00 00">' +
+        '<div class="lxp-m" id="lxp-mm"></div><div class="lxp-row"><button type="button" class="lxp-sb x" onclick="LXP.close()">Ləğv et</button><button type="button" class="lxp-sb" id="lxp-go" onclick="LXP.submit(\'' + x._id + '\')">Qeydiyyatdan keç</button></div>');
+    };
+    function genNo() {
+      for (var i = 0; i < 30; i++) { var n = 'DQ-' + (100000 + Math.floor(Math.random() * 900000)); if (!P.regs.some(function (r) { return r.work_no === n; })) return n; }
+      return 'DQ-' + Date.now().toString().slice(-8);
+    }
+    LXP.submit = async function (id) {
+      if (LXP.__s) return;
+      var m = $('lxp-mm'), name = $('lxp-n').value.trim().replace(/\s+/g, ' '), fin = $('lxp-f').value.replace(/\s+/g, '').toUpperCase(), c = $('lxp-c').value.trim(), cd = digits(c);
+      var bad = name.split(' ').filter(function (w) { return w.length > 1; }).length < 2 ? 'Ad və soyadı tam yazın.' :
+        !/^[A-Z0-9]{7}$/.test(fin) ? 'FİN kod 7 simvol olmalıdır (hərf və rəqəm).' :
+          (cd.length < 9 || cd.length > 13) ? 'Əlaqə nömrəsini düzgün yazın.' : '';
+      if (bad) { m.textContent = bad; return; }
+      LXP.__s = 1; var btn = $('lxp-go'); btn.disabled = true; m.style.color = '#0284c7'; m.textContent = 'Göndərilir...';
+      try {
+        await loadAll(); var x = exam(id), st = x && state(x);
+        if (!x) { m.style.color = '#dc2626'; m.textContent = 'Bu imtahan artıq mövcud deyil.'; return; }
+        var dup = P.regs.filter(function (r) { return String(r.exam_id) === String(x._id) && r.fin === fin && r.status !== 'cancelled'; })[0];
+        if (dup) { remember(x._id, { work_no: dup.work_no, fin: fin }); LXP.close(); paint(); LXP.done(x._id, dup.work_no, fin); return; }
+        if (st.code !== 'open') { m.style.color = '#dc2626'; m.textContent = st.code === 'full' ? 'Təəssüf, yer qalmayıb.' : 'Qeydiyyat bitib.'; paint(); return; }
+        var wn = genNo();
+        await V2.put('lxreg', { exam_id: String(x._id), exam_no: String(x.exam_no), cat: x.cat, title: x.title, name: name, fin: fin, contact: c, work_no: wn, status: 'pending', created: new Date().toISOString() });
+        await loadAll();
+        var me = P.regs.filter(function (r) { return r.work_no === wn; })[0];
+        if (!me) { m.style.color = '#dc2626'; m.textContent = 'Qeydiyyat yazılmadı. Yenidən cəhd edin.'; return; }
+        var cap = capOf(x);
+        if (cap) {   /* eyni anda yazılma halında limiti qoru */
+          var lst = regsOf(x).sort(function (a, b) { return String(a.created).localeCompare(String(b.created)) || (a._id > b._id ? 1 : -1); });
+          var idx = lst.findIndex(function (r) { return r.work_no === wn; });
+          if (idx >= cap) { await rawDel('lxreg', me._id); await loadAll(); paint(); m.style.color = '#dc2626'; m.textContent = 'Təəssüf, son yer başqası tərəfindən tutuldu.'; return; }
+        }
+        remember(x._id, { work_no: wn, fin: fin, name: name }); LXP.close(); paint(); ptUi(); LXP.done(x._id, wn, fin);
+      } catch (e) { m.style.color = '#dc2626'; m.textContent = 'Xəta: ' + (e && e.message || e); }
+      finally { LXP.__s = 0; var b2 = $('lxp-go'); if (b2) b2.disabled = false; }
+    };
+    LXP.done = function (id, wn, fin) {
+      var x = exam(id); if (!x) return; var p = payOf(x), s = new Date(x.start);
+      modal('<h3>✅ Qeydiyyat tamamlandı</h3><div class="sb">' + E(x.title) + ' · ' + E(x.cat) + ' · ' + dmy(s) + ' ' + hm(s) + '</div>' +
+        '<div class="lxp-no"><small>Şəxsi iş nömrəniz</small><b>' + E(wn) + '</b><button type="button" onclick="LXP.copy(\'' + E(wn) + '\',this)">Kopyala</button></div>' +
+        '<div class="lxp-warn">⚠️ Bu nömrəni mütləq qeyd edin (skrin çəkin).</div>' +
+        (p && p.on ? '<div class="lxp-ck">Qiymət: <b>' + E(money(p.price)) + '</b> — imtahana girmək üçün ödəniş təsdiqlənməlidir.</div><div class="lxp-row"><button type="button" class="lxp-sb" onclick="LXP.pay(\'' + x._id + '\')">💳 Ödəniş et</button></div>' : '') +
+        '<div class="lxp-row"><button type="button" class="lxp-sb wa" onclick="LXP.notify(\'' + x._id + '\',\'wa\')">WhatsApp ilə bildir</button><button type="button" class="lxp-sb x" onclick="LXP.close()">Bağla</button></div>');
+    };
+    function myOf(id) { return mine()[id] || {}; }
+    LXP.notify = function (id, v) {
+      var x = exam(id); if (!x) return; var my = myOf(x._id), p = payOf(x);
+      var t = 'Salam, "' + x.title + '" (' + x.cat + ') imtahanına qeydiyyatdan keçdim.' + (my.name ? '\nAd: ' + my.name : '') + '\nFİN: ' + (my.fin || '') + '\nŞəxsi iş nömrəm: ' + (my.work_no || '') + (p && p.on ? '\nQiymət: ' + money(p.price) : '');
+      window.open((v === 'tg' ? 'https://t.me/' + TG : 'https://wa.me/' + WA) + '?text=' + encodeURIComponent(t), '_blank');
+    };
+
+    /* ---------- ödəniş pəncərəsi (seçilmiş imtahan üçün) ---------- */
+    LXP.pay = function (id) {
+      var x = exam(id), p = payOf(x); if (!x || !p || !p.on) return; var my = myOf(x._id);
+      modal('<h3>💳 Ödəniş — ' + E(x.cat) + '</h3><div class="sb">' + E(x.title) + '</div><div class="lxp-am">' + E(money(p.price)) + '</div>' +
+        (p.card ? '<div class="lxp-cr"><b>' + E(grp(p.card)) + '</b><button type="button" class="lxp-sb" style="padding:8px 12px;flex:none" onclick="LXP.copy(\'' + digits(p.card) + '\',this)">Kopyala</button></div>' : '') +
+        (p.holder ? '<div class="lxp-ck">Kart sahibi: <b>' + E(p.holder) + '</b></div>' : '') + (p.note ? '<div class="lxp-ck">' + E(p.note) + '</div>' : '') +
+        '<div class="lxp-ck">1) Məbləği köçürün · 2) Çeki göndərin · 3) Admin təsdiqləyəndən sonra imtahan günü FİN kodla daxil olun.</div>' +
+        '<div class="lxp-row"><button type="button" class="lxp-sb wa" onclick="LXP.notify(\'' + x._id + '\',\'wa\')">Çeki WhatsApp</button><button type="button" class="lxp-sb tg" onclick="LXP.notify(\'' + x._id + '\',\'tg\')">Telegram</button></div>' +
+        '<div class="lxp-row"><button type="button" class="lxp-sb x" onclick="LXP.close()">Bağla</button></div>');
+      if (my.work_no) { /* iş nömrəsi mesaja düşür */ }
+    };
+
+    /* ---------- «Qeydiyyatımı yoxla» ---------- */
+    LXP.check = function () {
+      var f = ''; try { var k = mine(), ks = Object.keys(k); if (ks.length) f = k[ks[ks.length - 1]].fin || ''; } catch (e) {}
+      modal('<h3>🔎 Qeydiyyatımı yoxla</h3><div class="sb">FİN kodunuzu yazın</div><input id="lxp-cf" maxlength="7" style="text-transform:uppercase" placeholder="FİN KOD" value="' + E(f) + '"><div class="lxp-m" id="lxp-cm"></div><div id="lxp-cl"></div>' +
+        '<div class="lxp-row"><button type="button" class="lxp-sb x" onclick="LXP.close()">Bağla</button><button type="button" class="lxp-sb" onclick="LXP.find()">Yoxla</button></div>');
+    };
+    LXP.find = async function () {
+      var fin = $('lxp-cf').value.replace(/\s+/g, '').toUpperCase(), m = $('lxp-cm'), box = $('lxp-cl'); m.style.color = '#dc2626'; box.innerHTML = '';
+      if (fin.length < 5) { m.textContent = 'FİN kodu yazın.'; return; }
+      m.style.color = '#0284c7'; m.textContent = 'Yoxlanılır...'; await loadAll(); var pays = await paidMap();
+      var l = P.regs.filter(function (r) { return r.fin === fin && r.status !== 'cancelled'; });
+      m.style.color = '#dc2626'; m.textContent = l.length ? '' : 'Bu FİN ilə qeydiyyat tapılmadı.';
+      box.innerHTML = l.map(function (r) {
+        var x = exam(r.exam_id), p = payOf(x), s = x ? new Date(x.start) : null;
+        return '<div class="lxp-ck"><b>' + E(r.title) + ' · ' + E(r.cat) + '</b>' + (s ? '<br>' + dmy(s) + ' ' + hm(s) : '') + '<br>İş nömrəsi: <b>' + E(r.work_no) + '</b><br>Status: <b>' + (r.status === 'approved' ? '✅ Təsdiqlənib' : '⏳ Təsdiq gözləyir') + '</b>' +
+          (p && p.on ? '<br>Ödəniş: <b>' + (isPaid(pays, fin, r.exam_no, r.cat) ? '✅ Təsdiqlənib' : '⏳ Gözlənilir (' + E(money(p.price)) + ')') + '</b>' : '') + '</div>';
+      }).join('');
+    };
+
+    /* ---------- ana səhifə girişi ---------- */
+    function ptUi() {
+      var ex = exams(), h = $('v3-home'), hero = h && h.querySelector('.v3-hero'), ban = $('lxp-ban');
+      if (!ex.length || !hero) { if (ban) ban.remove(); var cb0 = document.querySelector('.lxp-cbtn'); if (cb0 && !ex.length) cb0.remove(); return; }
+      var txt = ex.length + ' aktiv imtahan · yerlər məhduddur';
+      if (!ban || !ban.isConnected) {
+        ban = document.createElement('section'); ban.id = 'lxp-ban';
+        ban.innerHTML = '<div class="lxp-bi"><div><b>📋 İmtahan Qeydiyyatı</b><span></span></div><button type="button" onclick="LXP.open()">Qeydiyyat paneli ›</button></div>';
+        hero.parentNode.insertBefore(ban, hero.nextSibling);
+      }
+      var sp = ban.querySelector('span'); if (sp.textContent !== txt) sp.textContent = txt;
+      var bd = document.querySelector('.lx-card .lx-bd');
+      if (bd && !bd.querySelector('.lxp-cbtn')) { var b = document.createElement('button'); b.type = 'button'; b.className = 'lxp-cbtn'; b.textContent = '📋 Qeydiyyat paneli'; b.onclick = LXP.open; bd.appendChild(b); }
+    }
+    var oMount = LX.mount;
+    LX.mount = function () { var r = oMount.apply(LX, arguments); try { ptUi(); } catch (e) {} return r; };
+    setInterval(function () { try { ptUi(); } catch (e) {} }, 4000);
+
+    /* ================== ADMİN ================== */
+    function extraFields(pre, x) {
+      x = x || {};
+      return '<div class="v2-card" style="margin:0;box-shadow:none;border:1.5px dashed #94a3b8;padding:12px;border-radius:14px"><div style="font-weight:800;color:#0a2f7a;margin-bottom:8px">📋 Qeydiyyat paneli</div>' +
+        '<div class="v2-f"><label>İmtahan keçiriləcək yer</label><input class="v2-in" id="' + pre + 'place" value="' + E(x.place != null ? x.place : 'Rəsmi internet saytında') + '"></div>' +
+        '<div class="v2-f mt-3"><label>Yerlərin sayı (0 / boş — limitsiz)</label><input class="v2-in" id="' + pre + 'cap" type="number" min="0" inputmode="numeric" value="' + E(x.cap != null ? x.cap : 50) + '"></div>' +
+        '<div class="v2-f mt-3"><label>Qeydiyyat bitmə tarixi və saatı</label><input class="v2-in" type="datetime-local" id="' + pre + 'rend" value="' + E(x.regEnd ? toLocal(new Date(x.regEnd)) : '') + '"><small class="v2-sub">Boş qalsa — imtahanın başlama vaxtı.</small></div></div>';
+    }
+    function toLocal(d) { return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()) + 'T' + p2(d.getHours()) + ':' + p2(d.getMinutes()); }
+    function readExtra(pre, startIso, endIso) {
+      var place = $(pre + 'place').value.trim() || 'Rəsmi internet saytında', cap = parseInt($(pre + 'cap').value) || 0, re = $(pre + 'rend').value;
+      if (cap < 0) return { err: 'Yerlərin sayı mənfi ola bilməz.' };
+      var o = { place: place, cap: cap, regEnd: '' };
+      if (re) {
+        var d = new Date(re); if (isNaN(d)) return { err: 'Qeydiyyat bitmə tarixi düzgün deyil.' };
+        if (startIso && d.getTime() > new Date(endIso || startIso).getTime()) return { err: 'Qeydiyyat bitmə vaxtı imtahan bitməsindən sonra ola bilməz.' };
+        o.regEnd = d.toISOString();
+      }
+      return { o: o };
+    }
+    var oA = LX.adminHtml;
+    LX.adminHtml = function () {
+      var h = oA.apply(LX, arguments), blk = '<div class="mt-3">' + extraFields('lp2-', null) + '</div>', k = '<div class="mt-3"><div class="lx-padm">', a2 = '<div class="v2-f mt-3"><label>Qapaq şəkli</label>';
+      if (h.indexOf(k) > -1) h = h.replace(k, function () { return blk + k; }); else if (h.indexOf(a2) > -1) h = h.replace(a2, function () { return blk + a2; });
+      h = h.replace(/<button class="v2-b o s" title="Ödənişi dəyiş"/, function (m) { return m; });
+      h = h.replace(/(<td class="lx-ptd">[\s\S]*?)(<button class="v2-b o s" title="Ödənişi dəyiş" onclick="LX\.payEdit\((\d+)\)">)/g, function (m, a, b, id) { return a + '<button class="v2-b o s" title="Qeydiyyat parametrləri" onclick="LX.ptEdit(' + id + ')">⚙️</button> ' + b; });
+      var opts = (LX.cache || []).map(function (x) { return '<option value="' + E(x._id) + '">' + E(x.title) + ' (' + E(x.cat) + ') · ' + dmy(new Date(x.start)) + '</option>'; }).join('');
+      var reg = '<div class="v2-card" style="max-width:640px;border:2px solid #2f63bd"><h3 style="font-size:20px">📋 Qeydiyyatlar (portal)</h3>' +
+        (opts ? '<div class="v2-f"><label>Sınaq</label><select class="v2-in" id="lxr-sel" onchange="LX.rlist()">' + opts + '</select></div><div id="lxr-box" class="mt-3"></div>' : '<div class="v2-sub">Hələ planlı sınaq yoxdur.</div>') + '</div>';
+      return h + reg;
+    };
+    var oPS = V2.p_start;
+    V2.p_start = async function () { var r = await oPS.apply(V2, arguments), a = r.after; r.after = function () { if (a) a(); LX.rlist(); }; return r; };
+
+    /* yeni sınaq: əlavə sahələr elan yaradıldıqdan sonra yazılır */
+    var oStart = LX.start;
+    LX.start = async function () {
+      var st = $('lx-dt') && $('lx-dt').value, en = $('lx-end') && $('lx-end').value;
+      var sIso = st ? new Date(st).toISOString() : '', eIso = en ? new Date(en).toISOString() : '';
+      var r = readExtra('lp2-', sIso, eIso); if (r.err) { alert(r.err); return; }
+      var before = {}; (await V2.list('liveexams')).forEach(function (x) { before[x._id] = 1; });
+      await oStart.apply(LX, arguments);
+      var now = await V2.list('liveexams'), nw = now.filter(function (x) { return !before[x._id]; }).sort(function (a, b) { return String(b.created).localeCompare(String(a.created)); })[0];
+      if (nw) { var o = {}; for (var k in nw) if (k !== '_id') o[k] = nw[k]; for (var k2 in r.o) o[k2] = r.o[k2]; await V2.put('liveexams', o, nw._id); await LX.load(); }
+    };
+    LX.ptEdit = function (id) {
+      var x = exam(id); if (!x) return;
+      var d = document.createElement('div'); d.id = 'lxp-pe'; d.className = 'lxp-ov';
+      d.onclick = function (e) { if (e.target === d) d.remove(); };
+      d.innerHTML = '<div class="lxp-bx"><h3>⚙️ ' + E(x.title) + ' (' + E(x.cat) + ')</h3>' + extraFields('le2-', x) + '<div class="lxp-m" id="lxp-em"></div><div class="lxp-row"><button type="button" class="lxp-sb x" onclick="document.getElementById(\'lxp-pe\').remove()">Ləğv et</button><button type="button" class="lxp-sb" onclick="LX.ptSave(\'' + x._id + '\')">💾 Saxla</button></div></div>';
+      document.body.appendChild(d);
+    };
+    LX.ptSave = async function (id) {
+      var x = exam(id), m = $('lxp-em'); if (!x) return;
+      var r = readExtra('le2-', x.start, LX.endOf(x).toISOString()); if (r.err) { m.textContent = r.err; return; }
+      var o = {}; for (var k in x) if (k !== '_id') o[k] = x[k]; for (var k2 in r.o) o[k2] = r.o[k2];
+      await V2.put('liveexams', o, x._id); var pe = $('lxp-pe'); if (pe) pe.remove(); await LX.load(); ptUi(); toast('Yeniləndi ✅'); V2.go('start');
+    };
+
+    /* admin: qeydiyyat siyahısı */
+    LX.rlist = async function () {
+      var sel = $('lxr-sel'), box = $('lxr-box'); if (!sel || !box) return;
+      var x = exam(sel.value), regs = ((await V2.list('lxreg')) || []).filter(function (r) { return String(r.exam_id) === String(sel.value) && r.status !== 'cancelled'; }), pays = await paidMap();
+      regs.sort(function (a, b) { return String(a.created).localeCompare(String(b.created)); }); LX.__rl = regs;
+      var p = payOf(x), ap = regs.filter(function (r) { return r.status === 'approved'; }).length, cap = x ? capOf(x) : 0;
+      box.innerHTML = '<div class="v2-sub">' + regs.length + (cap ? ' / ' + cap : '') + ' qeydiyyat · ' + ap + ' təsdiqlənib</div>' +
+        (regs.length ? '<div class="v2-wrap"><table class="v2-tbl"><thead><tr><th>İştirakçı</th><th>İş №</th><th>Status</th><th></th></tr></thead><tbody>' + regs.map(function (r) {
+          var paid = isPaid(pays, r.fin, r.exam_no, r.cat);
+          return '<tr><td><b>' + E(r.name) + '</b><br><small>' + E(r.fin) + ' · ' + E(r.contact) + '</small></td><td>' + E(r.work_no) + '</td><td><span class="lxa-bd ' + (r.status === 'approved' ? 'a' : 'p') + '">' + (r.status === 'approved' ? 'Təsdiqli' : 'Gözləyir') + '</span>' + (p && p.on ? '<br><small>' + (paid ? '💰 ödənilib' : '⏳ ödəniş yox') + '</small>' : '') + '</td>' +
+            '<td class="lxa-ac">' + (r.status === 'approved' ? '' : '<button class="v2-b g s" title="Təsdiqlə və icazə ver" onclick="LX.rAp(\'' + r._id + '\')">✅</button>') + (p && p.on ? '<button class="v2-b o s" title="Ödəniş alınıb / ləğv" onclick="LX.rPay(\'' + r._id + '\')">💰</button>' : '') + '<button class="v2-b r s" onclick="LX.rDel(\'' + r._id + '\')">🗑️</button></td></tr>';
+        }).join('') + '</tbody></table></div><button class="v2-b o s mt-3" onclick="LX.rCsv()">⬇️ CSV yüklə</button>' : '<div class="v2-empty">Bu sınaq üçün qeydiyyat yoxdur.</div>');
+    };
+    function rget(id) { return (LX.__rl || []).filter(function (r) { return String(r._id) === String(id); })[0]; }
+    LX.rAp = async function (id) {
+      var r = rget(id); if (!r) return;
+      try {
+        var q = await _supabase.from('allowed_students').select('*').eq('fin', r.fin), old = (q.data || []).filter(function (s) { return String(s.exam_no) === String(r.exam_no); })[0], res;
+        if (old) { var cs = Array.isArray(old.categories) ? old.categories.slice() : []; if (cs.indexOf(r.cat) < 0) cs.push(r.cat); res = await _supabase.from('allowed_students').update({ student_name: r.name, categories: cs }).eq('id', old.id); }
+        else res = await _supabase.from('allowed_students').insert([{ student_name: r.name, fin: r.fin, exam_no: String(r.exam_no), categories: [r.cat] }]);
+        if (res.error) { alert('Xəta: ' + res.error.message); return; }
+        var o = {}; for (var k in r) if (k !== '_id') o[k] = r[k]; o.status = 'approved'; await V2.put('lxreg', o, r._id);
+        toast('Təsdiqləndi, giriş icazəsi verildi ✅');
+      } catch (e) { alert('Xəta: ' + (e && e.message || e)); }
+      LX.rlist(); if (LX.plist) LX.plist();
+    };
+    LX.rPay = async function (id) {
+      var r = rget(id); if (!r) return; var pays = await paidMap(), ok = isPaid(pays, r.fin, r.exam_no, r.cat);
+      var rec = pays.filter(function (z) { return String(z.fin).toUpperCase() === r.fin && String(z.exam_no) === String(r.exam_no) && String(z.cat).toUpperCase() === String(r.cat).toUpperCase(); })[0];
+      await V2.put('lxpay', { fin: r.fin, exam_no: String(r.exam_no), cat: String(r.cat).toUpperCase(), paid: !ok, at: new Date().toISOString() }, rec ? rec._id : undefined);
+      LX.rlist(); if (LX.plist) LX.plist();
+    };
+    LX.rDel = async function (id) {
+      var r = rget(id); if (!r || !confirm(r.name + ' qeydiyyatı silinsin? (giriş icazəsi ayrıca «İcazə» siyahısından silinir)')) return;
+      await rawDel('lxreg', r._id); LX.rlist();
+    };
+    LX.rCsv = function () {
+      var q = function (s) { return '"' + String(s == null ? '' : s).replace(/"/g, '""') + '"'; };
+      var rows = [['Ad Soyad', 'FİN', 'Əlaqə', 'İş nömrəsi', 'Status', 'Tarix']].concat((LX.__rl || []).map(function (r) { return [r.name, r.fin, r.contact, r.work_no, r.status, r.created]; }));
+      var a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['\ufeff' + rows.map(function (r) { return r.map(q).join(','); }).join('\n')], { type: 'text/csv;charset=utf-8' }));
+      a.download = 'qeydiyyatlar.csv'; document.body.appendChild(a); a.click(); a.remove();
+    };
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      if ($('lxp-m')) LXP.close(); else if ($('lxp')) LXP.exit();
+    });
+    loadAll().then(function () { ptUi(); });
+    return true;
+  }
+  if (!boot()) { var n = 0, iv = setInterval(function () { if (boot() || ++n > 60) clearInterval(iv); }, 250); }
+})();
+</script>
+
 </body>
 </html>
